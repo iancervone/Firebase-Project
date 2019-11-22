@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>317154029705-viddpir0ibp716fdr6rbf6gggi20hdek.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.317154029705-viddpir0ibp716fdr6rbf6gggi20hdek</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDozVadS-9Cia3_K_uQST1Mj9TYCivf_44</string>
+	<key>GCM_SENDER_ID</key>
+	<string>317154029705</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>pursuit-fellowship.Firebase-Project</string>
+	<key>PROJECT_ID</key>
+	<string>fir-project-44252</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fir-project-44252.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:317154029705:ios:ce3e4f015a418afcd29658</string>
+	<key>DATABASE_URL</key>
+	<string>https://fir-project-44252.firebaseio.com</string>
+</dict>
+</plist>
