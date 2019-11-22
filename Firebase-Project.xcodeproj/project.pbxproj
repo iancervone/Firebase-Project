@@ -16,6 +16,7 @@
 		3C95307623882B1F004EE1BF /* Firebase_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C95307523882B1F004EE1BF /* Firebase_ProjectTests.swift */; };
 		3C95308123882B7B004EE1BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3C95308023882B7B004EE1BF /* GoogleService-Info.plist */; };
 		3C953084238849BE004EE1BF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C953083238849BE004EE1BF /* LoginVC.swift */; };
+		3C95308623887CC3004EE1BF /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C95308523887CC3004EE1BF /* SignUpVC.swift */; };
 		3D2E74C00A211B483B4088C6 /* Pods_Firebase_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903D0D11525C22A15235BC00 /* Pods_Firebase_Project.framework */; };
 		A1E3A1D5BC803B49898C73B2 /* Pods_Firebase_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 367A07DE5A89CE37791AE055 /* Pods_Firebase_ProjectTests.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		3C95307723882B1F004EE1BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C95308023882B7B004EE1BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3C953083238849BE004EE1BF /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		3C95308523887CC3004EE1BF /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		7859BDC152571A335BB1270C /* Pods-Firebase-ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase-ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-Firebase-ProjectTests/Pods-Firebase-ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		903D0D11525C22A15235BC00 /* Pods_Firebase_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Firebase_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A7D0CC0B47FFEC4F9421BBA /* Pods-Firebase-ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Firebase-ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-Firebase-ProjectTests/Pods-Firebase-ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				3C953083238849BE004EE1BF /* LoginVC.swift */,
+				3C95308523887CC3004EE1BF /* SignUpVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C95308623887CC3004EE1BF /* SignUpVC.swift in Sources */,
 				3C95306623882B1E004EE1BF /* Firebase_Project.xcdatamodeld in Sources */,
 				3C95306023882B1E004EE1BF /* ViewController.swift in Sources */,
 				3C95305C23882B1E004EE1BF /* AppDelegate.swift in Sources */,

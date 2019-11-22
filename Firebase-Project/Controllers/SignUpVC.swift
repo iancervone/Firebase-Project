@@ -9,7 +9,7 @@
 
 import UIKit
 
-class LoginVC: UIViewController {
+class SignUpVC: UIViewController {
     
     //MARK: VIEWS
     
@@ -24,7 +24,7 @@ class LoginVC: UIViewController {
         return label
     }()
   
-  lazy var loginLabel: UILabel = {
+  lazy var signUpLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "LOGIN"
@@ -35,7 +35,7 @@ class LoginVC: UIViewController {
         return label
   }()
   
-    lazy var signUpButton: UIButton = {
+    lazy var loginButton: UIButton = {
           let button = UIButton(type: .system)
           button.setTitle("SIGN UP", for: .normal)
           button.setTitleColor(.white, for: .normal)
@@ -56,7 +56,7 @@ class LoginVC: UIViewController {
   //                                          NSAttributedString.Key.foregroundColor:  UIColor(red: 17/255, green: 154/255, blue: 237/255, alpha: 1)]))
   //        button.setAttributedTitle(attributedTitle, for: .normal)
         
-          button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
+  //        button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
           return button
       }()
     
@@ -87,7 +87,7 @@ class LoginVC: UIViewController {
         return textField
     }()
 //
-    lazy var loginButton: UIButton = {
+    lazy var signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("LOGIN", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -122,11 +122,11 @@ class LoginVC: UIViewController {
 //        loginButton.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 1)
 //    }
 //
-    @objc func showSignUp() {
-        let signupVC = SignUpVC()
-        signupVC.modalPresentationStyle = .formSheet
-        present(signupVC, animated: true, completion: nil)
-    }
+//    @objc func showSignUp() {
+//        let signupVC = SignUpViewController()
+//        signupVC.modalPresentationStyle = .formSheet
+//        present(signupVC, animated: true, completion: nil)
+//    }
 //
 //    @objc func tryLogin() {
 //        guard let email = emailTextField.text, let password = passwordTextField.text else {
@@ -208,7 +208,7 @@ class LoginVC: UIViewController {
   
   
   private func loginSignUpStackViewSetUp() {
-        let stackView = UIStackView(arrangedSubviews: [loginLabel, signUpButton])
+        let stackView = UIStackView(arrangedSubviews: [signUpLabel, loginButton])
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.distribution = .fill
