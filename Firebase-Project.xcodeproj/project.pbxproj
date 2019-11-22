@@ -89,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				3C95305A23882B1E004EE1BF /* Firebase-Project */,
+				3C95308723887FC4004EE1BF /* Helpers */,
 				3C95307423882B1F004EE1BF /* Firebase-ProjectTests */,
 				3C95305923882B1E004EE1BF /* Products */,
 				1B35EBF5AE522297087FEC9F /* Pods */,
@@ -137,6 +138,13 @@
 				3C95308523887CC3004EE1BF /* SignUpVC.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3C95308723887FC4004EE1BF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		431B091C83628CE4895D0D2F /* Frameworks */ = {

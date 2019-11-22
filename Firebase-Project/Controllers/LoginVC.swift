@@ -8,10 +8,12 @@
 
 
 import UIKit
+import FirebaseAuth
+
 
 class LoginVC: UIViewController {
     
-    //MARK: VIEWS
+//MARK: VIEWS
     
     lazy var companyNameLabel: UILabel = {
         let label = UILabel()
@@ -45,17 +47,6 @@ class LoginVC: UIViewController {
           button.layer.borderWidth = 2
           button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
           button.isEnabled = false
-
-  //        let attributedTitle = NSMutableAttributedString(string: "Dont have an account?  ",
-  //                              attributes: [
-  //                                          NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
-  //                                          NSAttributedString.Key.foregroundColor: UIColor.white])
-  //        attributedTitle.append(NSAttributedString(string: "Sign Up",
-  //                              attributes: [
-  //                                          NSAttributedString.Key.font: UIFont(name: "Verdana-Bold", size: 14)!,
-  //                                          NSAttributedString.Key.foregroundColor:  UIColor(red: 17/255, green: 154/255, blue: 237/255, alpha: 1)]))
-  //        button.setAttributedTitle(attributedTitle, for: .normal)
-        
           button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
           return button
       }()
@@ -69,10 +60,10 @@ class LoginVC: UIViewController {
         textField.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         textField.textColor = .white
         textField.autocorrectionType = .no
-//        textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+        textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         return textField
     }()
-//
+
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = " Enter Password"
@@ -83,10 +74,11 @@ class LoginVC: UIViewController {
         textField.textColor = .white
         textField.autocorrectionType = .no
         textField.isSecureTextEntry = true
-//        textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+        textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         return textField
     }()
-//
+
+  
     lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("LOGIN", for: .normal)
@@ -95,14 +87,13 @@ class LoginVC: UIViewController {
         button.backgroundColor = .clear
         button.layer.borderWidth = 2
         button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-//        button.addTarget(self, action: #selector(tryLogin), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tryLogin), for: .touchUpInside)
         button.isEnabled = false
         return button
     }()
-//
   
 
-    //MARK: Lifecycle methods
+//MARK: Lifecycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,31 +101,33 @@ class LoginVC: UIViewController {
         setupSubViews()
     }
 
-//    //MARK: Obj-C methods
-//
-//    @objc func validateFields() {
-//        guard emailTextField.hasText, passwordTextField.hasText else {
+//MARK: Obj-C methods
+
+    @objc func validateFields() {
+        guard emailTextField.hasText, passwordTextField.hasText else {
 //            loginButton.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 0.5)
-//            loginButton.isEnabled = false
-//            return
-//        }
-//        loginButton.isEnabled = true
-//        loginButton.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 1)
-//    }
-//
+            loginButton.isEnabled = false
+            return
+        }
+        loginButton.isEnabled = true
+        loginButton.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+    }
+
     @objc func showSignUp() {
         let signupVC = SignUpVC()
+        print("button pressed")
         signupVC.modalPresentationStyle = .formSheet
         present(signupVC, animated: true, completion: nil)
     }
-//
-//    @objc func tryLogin() {
-//        guard let email = emailTextField.text, let password = passwordTextField.text else {
-//            showAlert(with: "Error", and: "Please fill out all fields.")
-//            return
-//        }
-//
-//        //MARK: TODO - remove whitespace (if any) from email/password
+
+    @objc func tryLogin() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            showAlert(with: "Error", and: "Please fill out all fields.")
+            return
+        }
+  }
+
+//MARK: TODO - remove whitespace (if any) from email/password
 //
 //        guard email.isValidEmail else {
 //            showAlert(with: "Error", and: "Please enter a valid email")
@@ -150,15 +143,15 @@ class LoginVC: UIViewController {
 //            self.handleLoginResponse(with: result)
 //        }
 //    }
-//
-//    //MARK: Private methods
-//
-//    private func showAlert(with title: String, and message: String) {
-//        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//        present(alertVC, animated: true, completion: nil)
-//    }
-//
+
+//MARK: Private methods
+
+    private func showAlert(with title: String, and message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
+
 //    private func handleLoginResponse(with result: Result<(), Error>) {
 //        switch result {
 //        case .failure(let error):
@@ -187,7 +180,7 @@ class LoginVC: UIViewController {
 //        }
 //    }
     
-    //MARK: UI Setup
+//MARK: UI Setup
     
     private func setupSubViews() {
       companyNameLabelSetup()
@@ -195,6 +188,7 @@ class LoginVC: UIViewController {
       emailPasswordStackViewSetUp()
     }
     
+  
     private func companyNameLabelSetup() {
         view.addSubview(companyNameLabel)
         companyNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -223,6 +217,7 @@ class LoginVC: UIViewController {
         ])
       }
   
+  
     private func emailPasswordStackViewSetUp() {
         let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
         stackView.axis = .vertical
@@ -240,3 +235,4 @@ class LoginVC: UIViewController {
       }
 
 }
+
