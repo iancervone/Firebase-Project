@@ -105,7 +105,6 @@ class LoginVC: UIViewController {
 
     @objc func validateFields() {
         guard emailTextField.hasText, passwordTextField.hasText else {
-//            loginButton.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 0.5)
             loginButton.isEnabled = false
             return
         }
