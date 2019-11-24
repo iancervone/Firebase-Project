@@ -124,24 +124,23 @@ class LoginVC: UIViewController {
             showAlert(with: "Error", and: "Please fill out all fields.")
             return
         }
-  }
 
 //MARK: TODO - remove whitespace (if any) from email/password
   
-//        guard email.isValidEmail else {
-//            showAlert(with: "Error", and: "Please enter a valid email")
-//            return
-//        }
-//
-//        guard password.isValidPassword else {
-//            showAlert(with: "Error", and: "Please enter a valid password. Passwords must have at least 8 characters.")
-//            return
-//        }
-//
-//        FirebaseAuthService.manager.loginUser(email: email.lowercased(), password: password) { (result) in
-//            self.handleLoginResponse(with: result)
-//        }
-//    }
+        guard email.isValidEmail else {
+            showAlert(with: "Error", and: "Please enter a valid email")
+            return
+        }
+
+        guard password.isValidPassword else {
+            showAlert(with: "Error", and: "Please enter a valid password. Passwords must have at least 8 characters.")
+            return
+        }
+
+        FirebaseAuthService.manager.loginUser(email: email.lowercased(), password: password) { (result) in
+            self.handleLoginResponse(with: result)
+        }
+    }
 
 //MARK: Private methods
 
@@ -151,33 +150,33 @@ class LoginVC: UIViewController {
         present(alertVC, animated: true, completion: nil)
     }
 
-//    private func handleLoginResponse(with result: Result<(), Error>) {
-//        switch result {
-//        case .failure(let error):
-//            showAlert(with: "Error", and: "Could not log in. Error: \(error)")
-//        case .success:
-//
-//            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//                let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
-//                else {
-//                    //MARK: TODO - handle could not swap root view controller
-//                    return
-//            }
-//
-//            //MARK: TODO - refactor this logic into scene delegate
-//            UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
-//                if FirebaseAuthService.manager.currentUser?.photoURL != nil {
-//                    window.rootViewController = RedditTabBarViewController()
-//                } else {
-//                    window.rootViewController = {
-//                        let profileSetupVC = ProfileEditViewController()
-//                        profileSetupVC.settingFromLogin = true
-//                        return profileSetupVC
-//                    }()
-//                }
-//            }, completion: nil)
-//        }
-//    }
+    private func handleLoginResponse(with result: Result<(), Error>) {
+        switch result {
+        case .failure(let error):
+            showAlert(with: "Error", and: "Could not log in. Error: \(error)")
+        case .success:
+
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+                else {
+                    //MARK: TODO - handle could not swap root view controller
+                    return
+            }
+
+            //MARK: TODO - refactor this logic into scene delegate
+            UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+                if FirebaseAuthService.manager.currentUser?.photoURL != nil {
+                    window.rootViewController = TabBarVC()
+                } else {
+                    window.rootViewController = {
+                        let profileSetupVC = EditProfileVC()
+                        profileSetupVC.settingFromLogin = true
+                        return profileSetupVC
+                    }()
+                }
+            }, completion: nil)
+        }
+    }
     
 //MARK: UI Setup
     

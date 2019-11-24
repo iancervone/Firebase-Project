@@ -167,10 +167,10 @@ class SignUpVC: UIViewController {
           //MARK: TODO - refactor this logic into scene delegate
           UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
               if FirebaseAuthService.manager.currentUser?.photoURL != nil {
-                  window.rootViewController = RedditTabBarViewController()
+                  window.rootViewController = TabBarVC()
               } else {
                   window.rootViewController = {
-                      let profileSetupVC = ProfileEditViewController()
+                      let profileSetupVC = EditProfileVC()
                       profileSetupVC.settingFromLogin = true
                       return profileSetupVC
                   }()
