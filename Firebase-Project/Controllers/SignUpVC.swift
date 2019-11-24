@@ -2,6 +2,8 @@
 
 
 import UIKit
+import FirebaseAuth
+
 
 class SignUpVC: UIViewController {
     
@@ -38,19 +40,8 @@ class SignUpVC: UIViewController {
           button.backgroundColor = .clear
           button.layer.borderWidth = 2
           button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+          button.addTarget(self, action: #selector(trySignUp), for: .touchUpInside)
           button.isEnabled = true
-
-  //        let attributedTitle = NSMutableAttributedString(string: "Dont have an account?  ",
-  //                              attributes: [
-  //                                          NSAttributedString.Key.font: UIFont(name: "Verdana", size: 14)!,
-  //                                          NSAttributedString.Key.foregroundColor: UIColor.white])
-  //        attributedTitle.append(NSAttributedString(string: "Sign Up",
-  //                              attributes: [
-  //                                          NSAttributedString.Key.font: UIFont(name: "Verdana-Bold", size: 14)!,
-  //                                          NSAttributedString.Key.foregroundColor:  UIColor(red: 17/255, green: 154/255, blue: 237/255, alpha: 1)]))
-  //        button.setAttributedTitle(attributedTitle, for: .normal)
-        
-  //        button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
           return button
       }()
     
@@ -63,10 +54,10 @@ class SignUpVC: UIViewController {
         textField.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         textField.textColor = .white
         textField.autocorrectionType = .no
-//        textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+        textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         return textField
     }()
-//
+
     lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = " Enter Password"
@@ -77,10 +68,10 @@ class SignUpVC: UIViewController {
         textField.textColor = .white
         textField.autocorrectionType = .no
         textField.isSecureTextEntry = true
-//        textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
+        textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         return textField
     }()
-//
+
     lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("LOGIN", for: .normal)
@@ -93,7 +84,7 @@ class SignUpVC: UIViewController {
         button.isEnabled = true
         return button
     }()
-//
+
   
 
     //MARK: Lifecycle methods
@@ -104,16 +95,14 @@ class SignUpVC: UIViewController {
         setupSubViews()
     }
 
-//    //MARK: Obj-C methods
+    //MARK: Obj-C methods
 
     @objc func validateFields() {
     guard emailTextField.hasText, passwordTextField.hasText else {
-//        signUpButton.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 0.5)
         signUpButton.isEnabled = false
         return
     }
     signUpButton.isEnabled = true
-//    signUpButton.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 1)
 }
   
   @objc func showLogIn() {
@@ -123,26 +112,26 @@ class SignUpVC: UIViewController {
          present(loginVC, animated: true, completion: nil)
      }
 
-//@objc func trySignUp() {
-//    guard let email = emailTextField.text, let password = passwordTextField.text else {
-//        showAlert(with: "Error", and: "Please fill out all fields.")
-//        return
-//    }
-//
-//    guard email.isValidEmail else {
-//        showAlert(with: "Error", and: "Please enter a valid email")
-//        return
-//    }
-//
-//    guard password.isValidPassword else {
-//        showAlert(with: "Error", and: "Please enter a valid password. Passwords must have at least 8 characters.")
-//        return
-//    }
-//
-//    FirebaseAuthService.manager.createNewUser(email: email.lowercased(), password: password) { [weak self] (result) in
-//        self?.handleCreateAccountResponse(with: result)
-//    }
-//}
+@objc func trySignUp() {
+    guard let email = emailTextField.text, let password = passwordTextField.text else {
+        showAlert(with: "Error", and: "Please fill out all fields.")
+        return
+    }
+
+    guard email.isValidEmail else {
+        showAlert(with: "Error", and: "Please enter a valid email")
+        return
+    }
+
+    guard password.isValidPassword else {
+        showAlert(with: "Error", and: "Please enter a valid password. Passwords must have at least 8 characters.")
+        return
+    }
+
+    FirebaseAuthService.manager.createNewUser(email: email.lowercased(), password: password) { [weak self] (result) in
+        self?.handleCreateAccountResponse(with: result)
+    }
+}
 
     //MARK: Private methods
   
