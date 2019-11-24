@@ -141,45 +141,45 @@ class SignUpVC: UIViewController {
       present(alertVC, animated: true, completion: nil)
   }
   
-//  private func handleCreateAccountResponse(with result: Result<User, Error>) {
-//      DispatchQueue.main.async { [weak self] in
-//          switch result {
-//          case .success(let user):
-//              FirestoreService.manager.createAppUser(user: AppUser(from: user)) { [weak self] newResult in
-//                  self?.handleCreatedUserInFirestore(result: newResult)
-//              }
-//          case .failure(let error):
-//              self?.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
-//          }
-//      }
-//  }
+  private func handleCreateAccountResponse(with result: Result<User, Error>) {
+      DispatchQueue.main.async { [weak self] in
+          switch result {
+          case .success(let user):
+              FirestoreService.manager.createAppUser(user: AppUser(from: user)) { [weak self] newResult in
+                  self?.handleCreatedUserInFirestore(result: newResult)
+              }
+          case .failure(let error):
+              self?.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
+          }
+      }
+  }
   
-//  private func handleCreatedUserInFirestore(result: Result<(), Error>) {
-//      switch result {
-//      case .success:
-//          guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//              let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
-//              else {
-//                  //MARK: TODO - handle could not swap root view controller
-//                  return
-//          }
-//
-//          //MARK: TODO - refactor this logic into scene delegate
-//          UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
-//              if FirebaseAuthService.manager.currentUser?.photoURL != nil {
-//                  window.rootViewController = RedditTabBarViewController()
-//              } else {
-//                  window.rootViewController = {
-//                      let profileSetupVC = ProfileEditViewController()
-//                      profileSetupVC.settingFromLogin = true
-//                      return profileSetupVC
-//                  }()
-//              }
-//          }, completion: nil)
-//      case .failure(let error):
-//          self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
-//      }
-//  }
+  private func handleCreatedUserInFirestore(result: Result<(), Error>) {
+      switch result {
+      case .success:
+          guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+              else {
+                  //MARK: TODO - handle could not swap root view controller
+                  return
+          }
+
+          //MARK: TODO - refactor this logic into scene delegate
+          UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+              if FirebaseAuthService.manager.currentUser?.photoURL != nil {
+                  window.rootViewController = RedditTabBarViewController()
+              } else {
+                  window.rootViewController = {
+                      let profileSetupVC = ProfileEditViewController()
+                      profileSetupVC.settingFromLogin = true
+                      return profileSetupVC
+                  }()
+              }
+          }, completion: nil)
+      case .failure(let error):
+          self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
+      }
+  }
     
     //MARK: UI Setup
     
