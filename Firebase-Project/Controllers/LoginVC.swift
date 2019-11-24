@@ -46,7 +46,7 @@ class LoginVC: UIViewController {
           button.backgroundColor = .clear
           button.layer.borderWidth = 2
           button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-          button.isEnabled = false
+          button.isEnabled = true
           button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
           return button
       }()
@@ -127,7 +127,7 @@ class LoginVC: UIViewController {
   }
 
 //MARK: TODO - remove whitespace (if any) from email/password
-//
+  
 //        guard email.isValidEmail else {
 //            showAlert(with: "Error", and: "Please enter a valid email")
 //            return

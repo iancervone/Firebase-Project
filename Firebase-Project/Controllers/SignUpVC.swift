@@ -1,10 +1,4 @@
-//
-//  LoginVC.swift
-//  Firebase-Project
-//
-//  Created by Ian Cervone on 11/22/19.
-//  Copyright © 2019 Ian Cervone. All rights reserved.
-//
+
 
 
 import UIKit
@@ -27,7 +21,7 @@ class SignUpVC: UIViewController {
   lazy var signUpLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.text = "LOGIN"
+        label.text = "SIGN UP"
         label.font = UIFont(name: "PingFang TC", size: 25)
         label.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         label.backgroundColor = .clear
@@ -35,16 +29,16 @@ class SignUpVC: UIViewController {
         return label
   }()
   
-    lazy var loginButton: UIButton = {
+    lazy var signUpButton: UIButton = {
           let button = UIButton(type: .system)
           button.setTitle("SIGN UP", for: .normal)
           button.setTitleColor(.white, for: .normal)
-      button.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
+          button.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
           button.titleLabel?.font = UIFont(name: "PingFang TC", size: 25)
           button.backgroundColor = .clear
           button.layer.borderWidth = 2
           button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-          button.isEnabled = false
+          button.isEnabled = true
 
   //        let attributedTitle = NSMutableAttributedString(string: "Dont have an account?  ",
   //                              attributes: [
@@ -87,7 +81,7 @@ class SignUpVC: UIViewController {
         return textField
     }()
 //
-    lazy var signUpButton: UIButton = {
+    lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("LOGIN", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -95,8 +89,8 @@ class SignUpVC: UIViewController {
         button.backgroundColor = .clear
         button.layer.borderWidth = 2
         button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-//        button.addTarget(self, action: #selector(tryLogin), for: .touchUpInside)
-        button.isEnabled = false
+        button.addTarget(self, action: #selector(showLogIn), for: .touchUpInside)
+        button.isEnabled = true
         return button
     }()
 //
@@ -111,81 +105,92 @@ class SignUpVC: UIViewController {
     }
 
 //    //MARK: Obj-C methods
-//
-//    @objc func validateFields() {
-//        guard emailTextField.hasText, passwordTextField.hasText else {
-//            loginButton.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 0.5)
-//            loginButton.isEnabled = false
-//            return
-//        }
-//        loginButton.isEnabled = true
-//        loginButton.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 1)
+
+    @objc func validateFields() {
+    guard emailTextField.hasText, passwordTextField.hasText else {
+//        signUpButton.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 0.5)
+        signUpButton.isEnabled = false
+        return
+    }
+    signUpButton.isEnabled = true
+//    signUpButton.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 1)
+}
+  
+  @objc func showLogIn() {
+         let loginVC = LoginVC()
+         print("button pressed")
+         loginVC.modalPresentationStyle = .formSheet
+         present(loginVC, animated: true, completion: nil)
+     }
+
+//@objc func trySignUp() {
+//    guard let email = emailTextField.text, let password = passwordTextField.text else {
+//        showAlert(with: "Error", and: "Please fill out all fields.")
+//        return
 //    }
 //
-//    @objc func showSignUp() {
-//        let signupVC = SignUpViewController()
-//        signupVC.modalPresentationStyle = .formSheet
-//        present(signupVC, animated: true, completion: nil)
+//    guard email.isValidEmail else {
+//        showAlert(with: "Error", and: "Please enter a valid email")
+//        return
 //    }
 //
-//    @objc func tryLogin() {
-//        guard let email = emailTextField.text, let password = passwordTextField.text else {
-//            showAlert(with: "Error", and: "Please fill out all fields.")
-//            return
-//        }
-//
-//        //MARK: TODO - remove whitespace (if any) from email/password
-//
-//        guard email.isValidEmail else {
-//            showAlert(with: "Error", and: "Please enter a valid email")
-//            return
-//        }
-//
-//        guard password.isValidPassword else {
-//            showAlert(with: "Error", and: "Please enter a valid password. Passwords must have at least 8 characters.")
-//            return
-//        }
-//
-//        FirebaseAuthService.manager.loginUser(email: email.lowercased(), password: password) { (result) in
-//            self.handleLoginResponse(with: result)
-//        }
+//    guard password.isValidPassword else {
+//        showAlert(with: "Error", and: "Please enter a valid password. Passwords must have at least 8 characters.")
+//        return
 //    }
 //
-//    //MARK: Private methods
-//
-//    private func showAlert(with title: String, and message: String) {
-//        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//        present(alertVC, animated: true, completion: nil)
+//    FirebaseAuthService.manager.createNewUser(email: email.lowercased(), password: password) { [weak self] (result) in
+//        self?.handleCreateAccountResponse(with: result)
 //    }
+//}
+
+    //MARK: Private methods
+  
+  private func showAlert(with title: String, and message: String) {
+      let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+      present(alertVC, animated: true, completion: nil)
+  }
+  
+//  private func handleCreateAccountResponse(with result: Result<User, Error>) {
+//      DispatchQueue.main.async { [weak self] in
+//          switch result {
+//          case .success(let user):
+//              FirestoreService.manager.createAppUser(user: AppUser(from: user)) { [weak self] newResult in
+//                  self?.handleCreatedUserInFirestore(result: newResult)
+//              }
+//          case .failure(let error):
+//              self?.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
+//          }
+//      }
+//  }
+  
+//  private func handleCreatedUserInFirestore(result: Result<(), Error>) {
+//      switch result {
+//      case .success:
+//          guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//              let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+//              else {
+//                  //MARK: TODO - handle could not swap root view controller
+//                  return
+//          }
 //
-//    private func handleLoginResponse(with result: Result<(), Error>) {
-//        switch result {
-//        case .failure(let error):
-//            showAlert(with: "Error", and: "Could not log in. Error: \(error)")
-//        case .success:
-//
-//            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//                let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
-//                else {
-//                    //MARK: TODO - handle could not swap root view controller
-//                    return
-//            }
-//
-//            //MARK: TODO - refactor this logic into scene delegate
-//            UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
-//                if FirebaseAuthService.manager.currentUser?.photoURL != nil {
-//                    window.rootViewController = RedditTabBarViewController()
-//                } else {
-//                    window.rootViewController = {
-//                        let profileSetupVC = ProfileEditViewController()
-//                        profileSetupVC.settingFromLogin = true
-//                        return profileSetupVC
-//                    }()
-//                }
-//            }, completion: nil)
-//        }
-//    }
+//          //MARK: TODO - refactor this logic into scene delegate
+//          UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+//              if FirebaseAuthService.manager.currentUser?.photoURL != nil {
+//                  window.rootViewController = RedditTabBarViewController()
+//              } else {
+//                  window.rootViewController = {
+//                      let profileSetupVC = ProfileEditViewController()
+//                      profileSetupVC.settingFromLogin = true
+//                      return profileSetupVC
+//                  }()
+//              }
+//          }, completion: nil)
+//      case .failure(let error):
+//          self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
+//      }
+//  }
     
     //MARK: UI Setup
     
@@ -208,7 +213,7 @@ class SignUpVC: UIViewController {
   
   
   private func loginSignUpStackViewSetUp() {
-        let stackView = UIStackView(arrangedSubviews: [signUpLabel, loginButton])
+        let stackView = UIStackView(arrangedSubviews: [loginButton, signUpLabel])
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.distribution = .fill
@@ -224,7 +229,7 @@ class SignUpVC: UIViewController {
       }
   
     private func emailPasswordStackViewSetUp() {
-        let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
+        let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, signUpButton])
         stackView.axis = .vertical
         stackView.spacing = 10
         stackView.distribution = .fillEqually
