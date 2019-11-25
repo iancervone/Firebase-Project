@@ -27,7 +27,6 @@ class EditProfileVC: UIViewController {
         button.setTitle("Add Image", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 14)
-        button.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 1)
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
         return button
@@ -49,7 +48,6 @@ class EditProfileVC: UIViewController {
         button.setTitle("Save Profile", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 14)
-        button.backgroundColor = UIColor(red: 255/255, green: 67/255, blue: 0/255, alpha: 1)
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(savePressed), for: .touchUpInside)
         return button
@@ -59,7 +57,7 @@ class EditProfileVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .gray
         setupViews()
-        //MARK: TODO - load in user image and fields when coming from profile page
+        //MARK:  - load in user image and fields when coming from profile page
     }
     
     @objc private func savePressed(){

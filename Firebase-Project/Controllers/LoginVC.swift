@@ -1,10 +1,4 @@
-//
-//  LoginVC.swift
-//  Firebase-Project
-//
-//  Created by Ian Cervone on 11/22/19.
-//  Copyright © 2019 Ian Cervone. All rights reserved.
-//
+
 
 
 import UIKit
@@ -125,7 +119,7 @@ class LoginVC: UIViewController {
             return
         }
 
-//MARK: TODO - remove whitespace (if any) from email/password
+//MARK: - remove whitespace (if any) from email/password
   
         guard email.isValidEmail else {
             showAlert(with: "Error", and: "Please enter a valid email")

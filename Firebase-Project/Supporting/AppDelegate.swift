@@ -19,6 +19,10 @@ import Firebase
       didFinishLaunchingWithOptions launchOptions:
       [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       FirebaseApp.configure()
+      
+      let db = Firestore.firestore()
+      print(db)
+      
       return true
     }
   }

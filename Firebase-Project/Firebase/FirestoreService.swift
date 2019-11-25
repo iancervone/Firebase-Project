@@ -4,6 +4,7 @@ import FirebaseFirestore
 
 fileprivate enum FireStoreCollections: String {
     case users
+    case posts
 }
 
 enum SortingCriteria: String {
@@ -34,6 +35,7 @@ class FirestoreService {
             completion(.success(()))
         }
     }
+  
     
     func updateCurrentUser(userName: String? = nil, photoURL: URL? = nil, completion: @escaping (Result<(), Error>) -> ()){
         guard let userId = FirebaseAuthService.manager.currentUser?.uid else {
@@ -49,8 +51,6 @@ class FirestoreService {
         if let photo = photoURL {
             updateFields["photoURL"] = photo.absoluteString
         }
-        
-       
         //PUT request
         db.collection(FireStoreCollections.users.rawValue).document(userId).updateData(updateFields) { (error) in
             if let error = error {
@@ -58,7 +58,6 @@ class FirestoreService {
             } else {
                 completion(.success(()))
             }
-            
         }
     }
     
@@ -80,21 +79,20 @@ class FirestoreService {
 //        }
 //    }
     
+  
+  
     //MARK: Posts
-  
-  
-  
-//    func createPost(post: Post, completion: @escaping (Result<(), Error>) -> ()) {
-//        var fields = post.fieldsDict
-//        fields["dateCreated"] = Date()
-//        db.collection(FireStoreCollections.posts.rawValue).addDocument(data: fields) { (error) in
-//            if let error = error {
-//                completion(.failure(error))
-//            } else {
-//                completion(.success(()))
-//            }
-//        }
-//    }
+    func createPost(post: Post, completion: @escaping (Result<(), Error>) -> ()) {
+        var fields = post.fieldsDict
+        fields["dateCreated"] = Date()
+        db.collection(FireStoreCollections.posts.rawValue).addDocument(data: fields) { (error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
     
   
   
@@ -128,21 +126,21 @@ class FirestoreService {
   
   
   
-//    func getPosts(forUserID: String, completion: @escaping (Result<[Post], Error>) -> ()) {
-//        db.collection(FireStoreCollections.posts.rawValue).whereField("creatorID", isEqualTo: forUserID).getDocuments { (snapshot, error) in
-//            if let error = error {
-//                completion(.failure(error))
-//            } else {
-//                let posts = snapshot?.documents.compactMap({ (snapshot) -> Post? in
-//                    let postID = snapshot.documentID
-//                    let post = Post(from: snapshot.data(), id: postID)
-//                    return post
-//                })
-//                completion(.success(posts ?? []))
-//            }
-//        }
-//
-//    }
+    func getPosts(forUserID: String, completion: @escaping (Result<[Post], Error>) -> ()) {
+        db.collection(FireStoreCollections.posts.rawValue).whereField("creatorID", isEqualTo: forUserID).getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                let posts = snapshot?.documents.compactMap({ (snapshot) -> Post? in
+                    let postID = snapshot.documentID
+                    let post = Post(from: snapshot.data(), id: postID)
+                    return post
+                })
+                completion(.success(posts ?? []))
+            }
+        }
+
+    }
     
     //MARK: Comments
     
