@@ -170,7 +170,7 @@ class LoginVC: UIViewController {
         }
     }
     
-//MARK: UI Setupfi
+//MARK: UI Setup
     
     private func setupSubViews() {
       companyNameLabelSetup()
