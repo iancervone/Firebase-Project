@@ -25,7 +25,9 @@ class LoginVC: UIViewController {
         label.numberOfLines = 0
         label.text = "LOGIN"
         label.font = UIFont(name: "PingFang TC", size: 25)
-        label.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        label.layer.borderWidth = 2
+        label.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         label.backgroundColor = .clear
         label.textAlignment = .center
         return label
@@ -38,8 +40,9 @@ class LoginVC: UIViewController {
       button.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.center
           button.titleLabel?.font = UIFont(name: "PingFang TC", size: 25)
           button.backgroundColor = .clear
-          button.layer.borderWidth = 2
-          button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+      button.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
+//          button.layer.borderWidth = 2
+//          button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
           button.isEnabled = true
           button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
           return button

@@ -25,9 +25,11 @@ class SignUpVC: UIViewController {
         label.numberOfLines = 0
         label.text = "SIGN UP"
         label.font = UIFont(name: "PingFang TC", size: 25)
-        label.textColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         label.backgroundColor = .clear
         label.textAlignment = .center
+        label.layer.borderWidth = 2
+        label.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         return label
   }()
   
@@ -40,6 +42,7 @@ class SignUpVC: UIViewController {
           button.backgroundColor = .clear
           button.layer.borderWidth = 2
           button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+          button.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
           button.addTarget(self, action: #selector(trySignUp), for: .touchUpInside)
           button.isEnabled = true
           return button
@@ -77,9 +80,10 @@ class SignUpVC: UIViewController {
         button.setTitle("LOGIN", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "PingFang TC", size: 25)
+        button.setTitleColor(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1), for: .normal)
         button.backgroundColor = .clear
-        button.layer.borderWidth = 2
-        button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+//        button.layer.borderWidth = 2
+//        button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
         button.addTarget(self, action: #selector(showLogIn), for: .touchUpInside)
         button.isEnabled = true
         return button
@@ -166,15 +170,7 @@ class SignUpVC: UIViewController {
 
           //MARK: TODO - refactor this logic into scene delegate
           UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
-              if FirebaseAuthService.manager.currentUser?.photoURL != nil {
                   window.rootViewController = TabBarVC()
-              } else {
-                  window.rootViewController = {
-                      let profileSetupVC = EditProfileVC()
-                      profileSetupVC.settingFromLogin = true
-                      return profileSetupVC
-                  }()
-              }
           }, completion: nil)
       case .failure(let error):
           self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
