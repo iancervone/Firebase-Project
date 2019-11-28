@@ -26,8 +26,8 @@ class LoginVC: UIViewController {
         label.text = "LOGIN"
         label.font = UIFont(name: "PingFang TC", size: 25)
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        label.layer.borderWidth = 2
-        label.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+//        label.layer.borderWidth = 2
+//        label.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         label.backgroundColor = .clear
         label.textAlignment = .center
         return label
@@ -96,6 +96,8 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .darkGray
         setupSubViews()
+      emailTextField.delegate = self
+      passwordTextField.delegate = self
     }
 
 //MARK: Obj-C methods
@@ -161,6 +163,7 @@ class LoginVC: UIViewController {
             }
 
             //MARK: TODO - refactor this logic into scene delegate
+            //MARK: MAKE ANIMATION SLIDE FROM LEFT TO RIGHT
             UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
                     window.rootViewController = TabBarVC()
             }, completion: nil)
@@ -220,6 +223,12 @@ class LoginVC: UIViewController {
             stackView.heightAnchor.constraint(equalToConstant: 180)
         ])
       }
-
 }
 
+
+
+extension LoginVC: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
+}

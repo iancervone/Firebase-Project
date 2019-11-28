@@ -28,8 +28,8 @@ class SignUpVC: UIViewController {
         label.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         label.backgroundColor = .clear
         label.textAlignment = .center
-        label.layer.borderWidth = 2
-        label.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
+//        label.layer.borderWidth = 2
+//        label.layer.borderColor = #colorLiteral(red: 0.6666666865, green: 0.6666666865, blue: 0.6666666865, alpha: 1)
         return label
   }()
   
@@ -97,6 +97,8 @@ class SignUpVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .darkGray
         setupSubViews()
+        passwordTextField.delegate = self
+        emailTextField.delegate = self
     }
 
     //MARK: Obj-C methods
@@ -169,6 +171,7 @@ class SignUpVC: UIViewController {
           }
 
           //MARK: TODO - refactor this logic into scene delegate
+          //MARK: MAKE ANIMATION SLIDE FROM LEFT TO RIGHT
           UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
                   window.rootViewController = TabBarVC()
           }, completion: nil)
@@ -228,5 +231,11 @@ class SignUpVC: UIViewController {
             stackView.heightAnchor.constraint(equalToConstant: 180)
         ])
       }
+}
 
+
+extension SignUpVC: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+    }
 }
