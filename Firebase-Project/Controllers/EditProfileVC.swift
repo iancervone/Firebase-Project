@@ -28,7 +28,7 @@ class EditProfileVC: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont(name: "Verdana-Bold", size: 14)
         button.layer.cornerRadius = 5
-        button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addImage), for: .touchUpInside)
         return button
     }()
     
@@ -90,7 +90,7 @@ class EditProfileVC: UIViewController {
         }
     }
     
-    @objc private func addImagePressed() {
+    @objc private func addImage() {
         //MARK: TODO - action sheet with multiple media options
         switch PHPhotoLibrary.authorizationStatus() {
         case .notDetermined, .denied, .restricted:

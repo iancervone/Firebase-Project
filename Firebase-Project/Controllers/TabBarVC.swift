@@ -2,7 +2,7 @@ import UIKit
 
 class TabBarVC: UITabBarController {
 
-    lazy var postsVC = UINavigationController(rootViewController: PostsVC())
+    lazy var postsVC = UINavigationController(rootViewController: AddPostsVC())
     
 //    lazy var usersVC = UINavigationController(rootViewController: UsersListViewController())
     

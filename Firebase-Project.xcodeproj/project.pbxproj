@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C3FC76A238F868B00CC3A72 /* PostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3FC769238F868A00CC3A72 /* PostsVC.swift */; };
 		3C95305C23882B1E004EE1BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C95305B23882B1E004EE1BF /* AppDelegate.swift */; };
 		3C95305E23882B1E004EE1BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C95305D23882B1E004EE1BF /* SceneDelegate.swift */; };
 		3C95306623882B1E004EE1BF /* Firebase_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3C95306423882B1E004EE1BF /* Firebase_Project.xcdatamodeld */; };
@@ -22,7 +23,7 @@
 		3C953092238B3D16004EE1BF /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C953091238B3D16004EE1BF /* AppUser.swift */; };
 		3C953094238B3EE0004EE1BF /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C953093238B3EE0004EE1BF /* TabBarVC.swift */; };
 		3C953096238B41B2004EE1BF /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C953095238B41B2004EE1BF /* ProfileVC.swift */; };
-		3C953098238B43A7004EE1BF /* PostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C953097238B43A7004EE1BF /* PostsVC.swift */; };
+		3C953098238B43A7004EE1BF /* AddPostsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C953097238B43A7004EE1BF /* AddPostsVC.swift */; };
 		3C95309A238B4581004EE1BF /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C953099238B4581004EE1BF /* EditProfileVC.swift */; };
 		3C95309C238B904E004EE1BF /* PicCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C95309B238B904E004EE1BF /* PicCVCell.swift */; };
 		3C95309F238B9DCB004EE1BF /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C95309E238B9DCB004EE1BF /* Post.swift */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		367A07DE5A89CE37791AE055 /* Pods_Firebase_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Firebase_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C3FC769238F868A00CC3A72 /* PostsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsVC.swift; sourceTree = "<group>"; };
 		3C95305823882B1E004EE1BF /* Firebase-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Firebase-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C95305B23882B1E004EE1BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3C95305D23882B1E004EE1BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +63,7 @@
 		3C953091238B3D16004EE1BF /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		3C953093238B3EE0004EE1BF /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		3C953095238B41B2004EE1BF /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		3C953097238B43A7004EE1BF /* PostsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsVC.swift; sourceTree = "<group>"; };
+		3C953097238B43A7004EE1BF /* AddPostsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostsVC.swift; sourceTree = "<group>"; };
 		3C953099238B4581004EE1BF /* EditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		3C95309B238B904E004EE1BF /* PicCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicCVCell.swift; sourceTree = "<group>"; };
 		3C95309E238B9DCB004EE1BF /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -156,7 +158,8 @@
 				3C95308523887CC3004EE1BF /* SignUpVC.swift */,
 				3C953095238B41B2004EE1BF /* ProfileVC.swift */,
 				3C953099238B4581004EE1BF /* EditProfileVC.swift */,
-				3C953097238B43A7004EE1BF /* PostsVC.swift */,
+				3C953097238B43A7004EE1BF /* AddPostsVC.swift */,
+				3C3FC769238F868A00CC3A72 /* PostsVC.swift */,
 				3C953093238B3EE0004EE1BF /* TabBarVC.swift */,
 			);
 			path = Controllers;
@@ -385,7 +388,7 @@
 			files = (
 				3C95308623887CC3004EE1BF /* SignUpVC.swift in Sources */,
 				3C953092238B3D16004EE1BF /* AppUser.swift in Sources */,
-				3C953098238B43A7004EE1BF /* PostsVC.swift in Sources */,
+				3C953098238B43A7004EE1BF /* AddPostsVC.swift in Sources */,
 				3C953094238B3EE0004EE1BF /* TabBarVC.swift in Sources */,
 				3C95306623882B1E004EE1BF /* Firebase_Project.xcdatamodeld in Sources */,
 				3C95308C238B3B4A004EE1BF /* FilebaseAuthService.swift in Sources */,
@@ -393,6 +396,7 @@
 				3C95309C238B904E004EE1BF /* PicCVCell.swift in Sources */,
 				3C953096238B41B2004EE1BF /* ProfileVC.swift in Sources */,
 				3C95309F238B9DCB004EE1BF /* Post.swift in Sources */,
+				3C3FC76A238F868B00CC3A72 /* PostsVC.swift in Sources */,
 				3C95305E23882B1E004EE1BF /* SceneDelegate.swift in Sources */,
 				3C953084238849BE004EE1BF /* LoginVC.swift in Sources */,
 				3C95308E238B3BCB004EE1BF /* FirestoreService.swift in Sources */,
